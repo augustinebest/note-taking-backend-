@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import cors from "cors";
 import express from "express";
 import graphlHTTP from "express-graphql";
@@ -5,7 +7,7 @@ import schema from "./GraphQL/Schema/Schema";
 import mongoose from "mongoose";mongoose.Promise = global.Promise;
 
 // Connecting Database
-mongoose.connect("mongodb://note-taking:note-taking1@ds047315.mlab.com:47315/note-taking", {
+mongoose.connect(`mongodb://${process.env.DB_NAME}:${process.env.DB_PASS}@ds047315.mlab.com:47315/note-taking`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
